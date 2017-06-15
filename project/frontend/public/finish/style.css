@@ -1,0 +1,59 @@
+
+.row[data-v-43c2d20e] {
+ display: flex;
+ justify-content: space-around;
+ align-items: center;
+}
+.left[data-v-43c2d20e], .right[data-v-43c2d20e] {
+ flex-basis: 25%;
+ text-align: center;
+}
+.center[data-v-43c2d20e] {
+ flex-basis: 50%;
+ text-align: center;
+}
+
+div[data-v-21ca21f2] {
+ text-align: center;
+}
+div > h1[data-v-21ca21f2] {
+ text-align: center;
+}
+
+.row[data-v-7941b362] {
+ display: flex;
+ justify-content: space-around;
+ align-items: center;
+}
+.left[data-v-7941b362], .right[data-v-7941b362], .center1[data-v-7941b362], .center2[data-v-7941b362] {
+ flex-basis: 25%;
+ text-align: center;
+}
+.center[data-v-7941b362] {
+ flex-basis: 50%;
+ text-align: center;
+}
+
+.row[data-v-2262c040], .center-button[data-v-2262c040] {
+ display: flex;
+ justify-content: space-around;
+ align-items: center;
+}
+.left[data-v-2262c040], .center1[data-v-2262c040], .center2[data-v-2262c040], .right[data-v-2262c040] {
+ flex-basis: 25%;
+ text-align: center;
+ align-items: center;
+}
+.center[data-v-2262c040] {
+ flex-basis: 50%;
+ text-align: center;
+ align-items: center;
+}
+input[data-v-2262c040] {
+ min-width: 24%;
+ max-width: 24%;
+ text-align: center;
+}
+
+
+/*# sourceMappingURL=style.css.map*/

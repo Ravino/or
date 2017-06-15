@@ -1,11 +1,14 @@
 'use strict';
 
+const path=require("path");
 const fs=require("fs");
 const app=require("express")();
 const serveStatic=require("serve-static");
 const bodyParser=require("body-parser");
 const cookieParser=require("cookie-parser");
 const session=require("express-session");
+
+
 const registration=require("./backend/httpServer/registration/registration.js");
 const passport=require("./backend/httpServer/authorization/passport.js");
 const authenticateStrategy=require("./backend/httpServer/authorization/authenticateStrategy.js");
@@ -24,11 +27,11 @@ app.use(passport.session());
 
 app.get("/", (req, res)=>{
  if(req.isAuthenticated()){
-  res.sendFile(__dirname+"/private.htm");
+  res.sendFile(__dirname+"/html/private.htm");
  }
 
  else {
-  res.sendFile(__dirname+"/public.htm");
+  res.sendFile(__dirname+"/html/public.htm");
  }
 });
 

@@ -3,7 +3,18 @@
 <div class="row">
 
 <div class="left">
+<div>
 <img src="avatarurl" :alt="avataralt" />
+</div>
+
+
+<div v-if="loaderPhoto.open==true">
+<input type="file" id="loaderPhoto" />
+</div>
+
+<div v-else>
+<a href="#" v-on:click="openLoaderPhoto">Заменить аватар</a>
+</div>
 </div>
 
 <div class="right">
@@ -19,9 +30,24 @@ my status
 import { mapState } from 'vuex';
 
 module.exports={
+ data: function(){
+  return {
+   loaderPhoto: {
+    open: false
+   }
+  };
+ },
+
  computed: mapState({
   avataralt: state => state.myProfile.user.avatarurl
- })
+ }),
+
+ methods: {
+  openLoaderPhoto: function(){
+   this.loaderPhoto.open=true;
+  }
+ }
+
 };
 </script>
 

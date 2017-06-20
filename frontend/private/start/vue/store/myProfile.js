@@ -5,7 +5,7 @@ module.exports={
  state: {
   namePage: "",
   user: {},
-  posts: null
+  posts: []
  },
 
 
@@ -15,12 +15,19 @@ module.exports={
    state.namePage=data.name+" "+data.lastname;
   },
 
-  updatePosts: function(state, data){
+  setGetTenPosts: function(state, data){
    state.posts=data;
   },
 
   addBeginPost: function(state, data){
    state.posts.unshift(data);
+  },
+
+  deletePost: function(state, data){
+   state.posts.splice(data, 1);
+  },
+  updateContenteditablePost: function(state, data){
+   state.posts[data.indexPost].contenteditable=data.checked;
   }
  }
 };

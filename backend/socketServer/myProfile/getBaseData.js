@@ -1,11 +1,8 @@
 'use strict';
 
-
-const db=require("../db.js");
 const htmlSpecialChars=require("htmlspecialchars");
 
-
-module.exports=(socket, usersId, socketsId)=>{
+module.exports=(db, socket, usersId, socketsId)=>{
 
  if(socketsId[socket.id]){
   const user={};
@@ -19,12 +16,12 @@ user.id=socketsId[socket.id].userId;
   }
 
 
-   if(!myBaseDataProfile[0]) {
+   if(!myBaseDataProfile.rows[0]) {
     socket.emit("myProfileGetBaseDataError", { status: 404 });
    }
 
    else {
-    socket.emit("myProfileGetBaseData", myBaseDataProfile[0]);
+    socket.emit("myProfileGetBaseData", myBaseDataProfile.rows[0]);
    }
   });
  }

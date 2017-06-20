@@ -1,0 +1,44 @@
+
+> or@1.0.0 wp /www/new
+> webpack
+
+
+Webpack is watching the files…
+
+ DONE  Compiled successfully in 4079ms01:59:45
+
+Hash: 10b957ec95073330addb
+Version: webpack 2.6.1
+Time: 4079ms
+        Asset      Size  Chunks                    Chunk Names
+     build.js   1.15 MB       0  [emitted]  [big]  build
+    common.js   5.99 kB       1  [emitted]         common
+    style.css   1.07 kB       0  [emitted]         build
+ build.js.map   1.44 MB       0  [emitted]         build
+style.css.map  86 bytes       0  [emitted]         build
+common.js.map   6.07 kB       1  [emitted]         common
+   [1] (webpack)/buildin/global.js 509 bytes {0} [built]
+   [2] ./~/socket.io-client/~/debug/browser.js 4.14 kB {0} [built]
+   [3] ./~/vue-loader/lib/component-normalizer.js 1.27 kB {0} [built]
+   [4] ./~/vuex/dist/vuex.esm.js 22.3 kB {0} [built]
+   [9] ./~/process/browser.js 5.3 kB {0} [built]
+  [12] ./~/socket.io-parser/index.js 7.65 kB {0} [built]
+ [133] ./~/socket.io-client/lib/manager.js 12.2 kB {0} [built]
+ [140] ./frontend/private/start/vue/includeStore.js 138 bytes {0} [built]
+ [141] ./~/socket.io-client/lib/index.js 2.17 kB {0} [built]
+ [142] ./frontend/private/start/vue/template/myProfile.vue 1.73 kB {0} [built]
+ [143] ./~/vue-resource/dist/vue-resource.es2015.js 35.9 kB {0} [built]
+ [144] ./~/vue-router/dist/vue-router.esm.js 62.5 kB {0} [built]
+ [145] ./~/vue-socket.io/dist/build.js 75.4 kB {0} [built]
+ [146] ./~/vue/dist/vue.esm.js 257 kB {0} [built]
+ [149] ./frontend/private/start/index.js 1.7 kB {0} [built]
+    + 195 hidden modules
+Child extract-text-webpack-plugin:
+       [0] ./~/css-loader/lib/css-base.js 2.26 kB {0} [built]
+       [1] ./~/css-loader!./~/vue-loader/lib/style-compiler?{"id":"data-v-a8fcc0cc","scoped":true,"hasInlineConfig":false}!./~/vue-loader/lib/selector.js?type=styles&index=0!./frontend/private/start/vue/template/myProfile.vue 491 bytes {0} [built]
+Child extract-text-webpack-plugin:
+       [0] ./~/css-loader/lib/css-base.js 2.26 kB {0} [built]
+       [1] ./~/css-loader!./~/vue-loader/lib/style-compiler?{"id":"data-v-d64336c0","scoped":true,"hasInlineConfig":false}!./~/vue-loader/lib/selector.js?type=styles&index=0!./frontend/private/start/vue/template/myProfile/listPosts.vue 450 bytes {0} [built]
+Child extract-text-webpack-plugin:
+       [0] ./~/css-loader/lib/css-base.js 2.26 kB {0} [built]
+       [1] ./~/css-loader!./~/vue-loader/lib/style-compiler?{"id":"data-v-4cd556bc","scoped":true,"hasInlineConfig":false}!./~/vue-loader/lib/selector.js?type=styles&index=0!./frontend/private/start/vue/template/myProfile/myAvatarStatus.vue 678 bytes {0} [built]

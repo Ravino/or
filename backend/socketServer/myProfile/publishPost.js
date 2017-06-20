@@ -1,26 +1,18 @@
 'use strict';
 
-
-const db=require("../db.js");
 const htmlSpecialChars=require("htmlspecialchars");
 
 
-module.exports=(socket, usersId, socketsId, message)=>{
+module.exports=(db, socket, usersId, socketsId, message)=>{
 
- console.log("1");
-
- if(message.userid && message.login && message.name && message.lastname && message.text){
-
-   console.log("2");
-
+ if(message.userid && message.login && message.name && message.lastname && message.textpost){
   if(socketsId[socket.id].userId==message.userid){
-
-   console.log("3");
 
    let post={
     postid: null,
+    timepublish: null,
     userid: htmlSpecialChars(message.userid),
-   text: htmlSpecialChars(message.text),
+   textpost: htmlSpecialChars(message.textpost),
     name: htmlSpecialChars(message.name),
     lastname: htmlSpecialChars(message.lastname),
     login: htmlSpecialChars(message.login),
@@ -28,35 +20,31 @@ module.exports=(socket, usersId, socketsId, message)=>{
     avataralt: htmlSpecialChars(message.avataralt)
    };
 
-console.log("4");
 
+   db.query("insert into posts (userid, textpost) values($1::int, $2::text) returning postid, timepublish", [post.userid, post.textpost], (err, idInsertPost)=>{
+    if(err){
+     console.log(err);
+     return;
+    }
 
-console.log("5");
+    if(idInsertPost.rows[0] && idInsertPost.rows[0].postid && idInsertPost.rows[0].timepublish){
+     post.postid=idInsertPost.rows[0].postid;
+     post.timepublish=idInsertPost.rows[0].timepublish;
+     socket.emit("myProfileAddBeginPost", post);
+    }
 
-console.log(post);
-
-   db.query("insert into posts (userid, login, name, lastname, textpost) values($1::int, $2::text, $3::text, $4::text, $5::text) returning postid", [post.userid, post.login, post.name, post.lastname, post.text], (err, idInsertPost)=>{
-
-console.log("6");
-    if(err) throw err;
-
-console.log("7");
-
-
-    post.postid=idInsertPost.postid;
-    socket.emit("myProfileAddBeginPost", post);
+    else {
+     socket.emit("myProfyleAddBeginPostErr", { status: 300 });
+    }
    });
    }
 
   else {
-  console.log("ne sovpadaet");
-
-    socket.emit("myProfile", { status: "bat get"});
+    socket.emit("myProfileAddBeginPostError", { status: 400});
   }
  }
 
  else {
-
-  socket.emit("myProfile", { status: "not found"});
+  socket.emit("myProfileAddBeginPost", { status: 404});
  }
 };

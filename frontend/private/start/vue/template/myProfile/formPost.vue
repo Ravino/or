@@ -8,7 +8,7 @@
 <h4>{{ namePage }}</h4>
 
 <div role="navigation">
-<textarea v-model="text" placeholder="Введите заметку"></textarea>
+<textarea v-model="textpost" placeholder="Введите заметку"></textarea>
 </div>
 </div>
 
@@ -33,7 +33,7 @@ import { mapState } from 'vuex';
 
 module.exports={
  data: function(){
-  return { text: "" };
+  return { textpost: "" };
  },
 
  computed: mapState({
@@ -43,13 +43,30 @@ module.exports={
 
  methods: {
   publishPost: function(){
-   let post=Object.assign(this.user, { text: this.text});
-
-  alert(JSON.stringify(post));
-
-   this.$socket.emit("myProfilePublishPost", post);
-   this.text="";
+   if(this.textpost){
+    let post=Object.assign(this.user, { textpost: this.textpost});
+    this.$socket.emit("myProfilePublishPost", post);
+    this.textpost="";
+   }
   }
  }
 };
 </script>
+
+<style scoped>
+.row {
+ display: flex;
+ justify-content: space-around;
+ align-items: center;
+}
+
+.left, .right {
+ flex-basis: 25%;
+ text-align: center;
+}
+
+.center {
+ flex-basis: 50%;
+ text-align: center;
+}
+</style>

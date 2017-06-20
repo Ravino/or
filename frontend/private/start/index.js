@@ -9,11 +9,13 @@ import VueResource from 'vue-resource';
 import io from "socket.io-client";
 
 let jwt=localStorage.getItem("jwt");
+const addres="46.37.149.180";
+//addres="localhost";
 
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
-Vue.use(VueSocketio, io("https://localhost:10000?jwt="+jwt, { transports: ['websocket'] }));
+Vue.use(VueSocketio, io("https://" + addres + ":10000?jwt="+jwt, { transports: ['websocket'] }));
 Vue.use(VueResource);
 
 

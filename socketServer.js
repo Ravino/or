@@ -1,5 +1,6 @@
 'use strict';
 
+const pg=require("./backend/pg.js");
 const app=require("express")();
 const fs=require("fs");
 const ioredis=require("ioredis");
@@ -26,28 +27,32 @@ io.use((skt, next)=>{
 });
 
 
-io.on("connect", (client)=>{
+pg.connect().then((db)=>{
+ io.on("connect", (client)=>{
 
- redisSubscribe.on("message", (chanal, user)=>{
-  apiSocket.auth.logout(io, client, usersId, socketsId, user);
+  redisSubscribe.on("message", (chanal, user)=>{
+   apiSocket.auth.logout(io, client, usersId, socketsId, user);
+  });
+
+
+  client.on("myProfileGetBaseData", ()=>{
+   apiSocket.myProfile.getBaseData(db, client, usersId, socketsId);
+  });
+
+
+  client.on("myProfilePublishPost", (message)=>{
+   apiSocket.myProfile.publishPost(db, client, usersId, socketsId, message);
+  });
+
+
+  client.on("myProfileGetTenPosts", ()=>{
+   apiSocket.myProfile.getTenPosts(db, client, usersId,socketsId);
+
+  });
+
+  client.on("myProfileDeletePost", (message)=>{
+   apiSocket.myProfile.deletePost(db, client, message);
+  });
+
  });
-
-
- client.on("myProfileGetBaseData", ()=>{
-  apiSocket.myProfile.getBaseData(client, usersId, socketsId);
- });
-
-
- client.on("myProfilePublishPost", (message)=>{
-  apiSocket.myProfile.publishPost(client, usersId, socketsId, message);
- });
-
-
- client.on("myProfileGetTenPosts", ()=>{
-  apiSocket.myProfile.getTenPosts(client, usersId,socketsId);
- });
-
-
-
 });
-

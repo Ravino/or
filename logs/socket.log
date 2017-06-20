@@ -1,0 +1,11 @@
+Error: another command is already in progress
+
+    at module.exports.Client.dispatchQuery (/www/new/node_modules/pg-native/index.js:199:23)
+    at module.exports.Client.query (/www/new/node_modules/pg-native/index.js:215:8)
+    at Object.module.exports [as getTenPosts] (/www/new/backend/socketServer/myProfile/getTenPosts.js:17:6)
+    at Socket.client.on (/www/new/socketServer.js:47:23)
+    at emitNone (events.js:105:13)
+    at Socket.emit (events.js:207:7)
+    at /www/new/node_modules/socket.io/lib/socket.js:503:12
+    at _combinedTickCallback (internal/process/next_tick.js:95:7)
+    at process._tickCallback (internal/process/next_tick.js:161:9)

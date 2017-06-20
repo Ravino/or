@@ -1,0 +1,40 @@
+<meta charset="utf-8" />
+
+<div id="test" contenteditable="true"></div>
+
+<button id="but">Click</button>
+
+
+<div id="test2"></div>
+
+<script>
+
+
+
+let f=document.querySelector("#test");
+
+let test2=document.querySelector("#test2");
+
+document.querySelector("#but").onclick=function(){
+ for(let i in f){
+   test2.innerHTML+=i+"<br />";
+  }
+ };
+
+for(let i in navigator.mediaDevices){
+ test.innerHTML+= i+"<br />";
+}
+
+var getUserMedia=navigator.mediaDevices.getUserMedia({
+ audio: true
+},
+ function (streem){
+ alert(streem);
+},
+
+function(err){
+ console.log(err);
+});
+
+
+</script>
